@@ -1,0 +1,12 @@
+.data-row	{ width: 100%; }
+.name		{ width: 20%; }
+.state		{ width: 5%; }
+.score		{ width: 10%; }
+.review		{ width: 40%; }
+.date		{ width: 12%; }
+
+tr > td > a {
+	color: turquoise;
+}
+
+tbody > tr > td > a {}

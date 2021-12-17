@@ -1,0 +1,41 @@
+<%- include ('../partials/header') %>
+<body>
+	<%- include ('../partials/menu') %>
+	<div class="container-fluid py-4" id="content">
+		<% let gallery = `<p class="text-light">Enter your query above to search movie reviews from the New York Times!</p>` %>
+		<% if (search_data) {
+			if (search_data.length > 0) gallery = `<div class="row" data-isotope='{"percentPosition": true }'>`;
+				
+			<!-- Iterate the search_data object & update the gallery variable -->
+			for (const movie of search_data) {
+				var card = '<div class="card-container">'
+				card += '<div class="card">';
+				card += '<div class="card-body">';
+				card += '<h5 class="card-title">';
+				card += movie.display_title;
+				card += '</h5>';
+				card += '<h6 class="card-subtitle text-muted">';
+				card += movie.publication_date;
+				card += '</h6>';
+				card += '<a class="btn text-light mt-2 mb-2 w-100" href="' + movie.link.url + '">';
+				card += '<p class="font-weight-bold mb-1">Read the NYTimes Review</p>'
+				card += movie.headline.replace("Review: ","");;
+				card += '</a>';
+				card += '<p class="card-text text-start">';
+				card += movie.summary_short
+				if (!movie.summary_short.length) card += 'Read the review now!'
+				card += '</p>';
+				card += '</div>'
+				card += '</div>'
+				card += '</div>'
+				gallery += card;
+			};
+			gallery += '</div>'
+		} else gallery = `<img src="/resources/img/204.jpg">` %>
+		<%- gallery %>
+	</div>
+</body>
+<footer>
+	<%- include('../partials/footer') %>
+</footer>
+</html>

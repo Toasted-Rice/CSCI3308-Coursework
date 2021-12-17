@@ -1,0 +1,24 @@
+.carousel, .carousel-inner{
+    height: 80vh;
+    min-height: 80vh;
+    max-height: 80vh;
+}
+
+.carousel-item{
+    height: 100%;
+}
+
+.carousel-item img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev, .carousel-control-next {
+	font-size: 100px;
+	flex-flow: column;
+}

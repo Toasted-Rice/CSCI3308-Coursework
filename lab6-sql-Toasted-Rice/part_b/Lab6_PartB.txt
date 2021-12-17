@@ -1,0 +1,130 @@
+Lab #6 Take Home
+Your name: James Vogenthaler
+
+
+---------------------------------------- Question 1 Query ---------------------------------------- 
+
+SELECT ship_city
+FROM orders
+GROUP BY ship_city
+ORDER BY COUNT(*)DESC
+LIMIT 1;
+
+RESULTS:
+   ship_city
+----------------
+ Rio de Janeiro
+(1 row)
+---------------------------------------- Question 2 Query ---------------------------------------- 
+
+WITH graz AS (
+	SELECT O.order_id, ARRAY_AGG(product_name) AS products, COUNT(D.product_id) AS num
+	FROM orders AS O
+	INNER JOIN order_details AS D
+	ON O.order_id = D.order_ID
+	INNER JOIN products AS P
+	ON P.product_id = D.product_id
+	GROUP BY ship_city, O.order_id
+	HAVING ship_city = 'Graz')
+SELECT order_id, products
+FROM graz, (SELECT MIN(num) AS least FROM graz) AS count
+WHERE num = least;
+
+RESULTS:
+ order_id |                products
+----------+----------------------------------------
+    10667 | {Gudbrandsdalsost,Flotemysost}
+    10402 | {Tunnbröd,Vegie-spread}
+    10403 | {Pavlova,Chocolade}
+    10571 | {Tofu,"Singaporean Hokkien Fried Mee"}
+(4 rows)
+---------------------------------------- Question 3 Query ---------------------------------------- 
+
+WITH sales AS (
+	SELECT company_name, COUNT(order_id) AS total_sales
+	FROM customers AS C
+	INNER JOIN orders AS O
+	ON C.customer_id = O.customer_id
+	GROUP BY c.company_name) 
+SELECT company_name, total_sales
+FROM sales, (SELECT AVG(total_sales) AS sales FROM sales) AS average
+WHERE total_sales > average.sales
+ORDER BY company_name ASC;
+
+RESULTS:
+         company_name         | total_sales
+------------------------------+-------------
+ Around the Horn              |          13
+ Berglunds snabbköp           |          18
+ Blondesddsl père et fils     |          11
+ Bon app'                     |          17
+ Bottom-Dollar Markets        |          14
+ B's Beverages                |          10
+ Die Wandernde Kuh            |          10
+ Ernst Handel                 |          30
+ Folk och fä HB               |          19
+ Frankenversand               |          15
+ Godos Cocina Típica          |          10
+ Great Lakes Food Market      |          11
+ Hanari Carnes                |          14
+ HILARION-Abastos             |          18
+ Hungry Owl All-Night Grocers |          19
+ Island Trading               |          10
+ Königlich Essen              |          14
+ La maison d'Asie             |          14
+ Lehmanns Marktstand          |          15
+ LILA-Supermercado            |          14
+ LINO-Delicateses             |          12
+ Magazzini Alimentari Riuniti |          10
+ Mère Paillarde               |          13
+ Old World Delicatessen       |          10
+ Ottilies Käseladen           |          10
+ Piccolo und mehr             |          10
+ Queen Cozinha                |          13
+ QUICK-Stop                   |          28
+ Rattlesnake Canyon Grocery   |          18
+ Reggiani Caseifici           |          12
+ Ricardo Adocicados           |          11
+ Richter Supermarkt           |          10
+ Save-a-lot Markets           |          31
+ Suprêmes délices             |          12
+ Tortuga Restaurante          |          10
+ Vaffeljernet                 |          11
+ Victuailles en stock         |          10
+ Wartian Herkku               |          15
+ White Clover Markets         |          14
+(39 rows)
+---------------------------------------- Question 4 Query ---------------------------------------- 
+
+SELECT C.category_id
+FROM categories AS C
+LEFT JOIN products AS P
+ON C.category_id = P.category_id
+GROUP BY C.category_id
+HAVING COUNT(product_id) >= 10
+ORDER BY C.category_id ASC;
+
+RESULTS:
+ category_id
+-------------
+           1
+           2
+           3
+           4
+           8
+(5 rows)
+---------------------------------------- Question 5 Query ---------------------------------------- 
+
+SELECT product_name
+FROM products AS p
+LEFT JOIN order_details AS o
+ON p.product_id = o.product_id
+GROUP BY p.product_id
+ORDER BY SUM(quantity) DESC
+LIMIT 1;
+
+RESULTS:
+   product_name
+-------------------
+ Camembert Pierrot
+(1 row)

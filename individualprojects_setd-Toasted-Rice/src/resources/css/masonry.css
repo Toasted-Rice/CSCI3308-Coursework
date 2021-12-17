@@ -1,0 +1,28 @@
+/** CARD STYLING **/
+.card {
+	background-color: transparent;
+	color: gainsboro;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+.card-container {
+	width: 20%;
+	height: fit-content;
+	padding: 0px;
+	border: 5px solid #212529;
+}
+
+@media only screen and (max-width:1600px) { .card-container {width:25%; }}
+@media only screen and (max-width:1250px) { .card-container {width:33%; }}
+@media only screen and (max-width:1000px) { .card-container {width:50%; }}
+@media only screen and (max-width:650px) { .card-container {width:100%; }}
+
+
+.card-text {
+	color: gainsboro;
+}
+
+#gallery {
+	height: 100% !important;
+}

@@ -1,0 +1,20 @@
+# ------------------------------------------------------------------------------
+# More resources related to this file:
+# [1] Overview   | https://docs.docker.com/compose/
+# -------------
+#  More resources for your projects:
+# [4] Samples    | https://github.com/docker/awesome-compose
+# ------------------------------------------------------------------------------
+version: "3.9"
+# This section defines all of our components as "services", each which is
+# itself a docker image [1].
+services:
+  devel:
+    image: ubuntu:20.04      # we'll use the ubuntu image
+    working_dir: /repository # this is where we'll mount the repository
+    volumes:
+      - ./:/repository       # Binds the current directory (containing our 
+                             # source code) into the image, so that changes 
+                             # made to the source code on the host are 
+                             # reflected witin the container.  
+    command: bash            # run 

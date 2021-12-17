@@ -1,0 +1,206 @@
+<%- include ('../partials/header') %>
+<body>
+	<%- include ('../partials/menu') %>
+	<div class="container-fluid">
+		<br>
+		<div class="row d-flex">
+			<div class="col-md-3 justify-content-center" id="directory_window">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="text-danger">Directory</h3>
+					</div>
+					<div class="card-body">
+						<% let generateDirectory = function(directory, level, path) {
+							let sub_folders = Object.keys(directory)
+							sub_folders.forEach(sub_folder => {
+								let sub_folder_name = sub_folder.replace(/ /g, '-');
+								let sub_folder_path = path + '/' + sub_folder_name;
+								sub_folder_path = sub_folder_path.replace('/' + root_nickname.replace(/ /g, '-'),'')
+								let sub_folder_id = map_path[sub_folder_path]
+								let state = map_state[sub_folder_id];
+								let expandable = (Object.keys(directory[sub_folder]).length) ? '' : ' hidden';
+								let show = (state) ? '' : ' show';
+								let hide = (state) ? ' collapsed' : '';
+								let directory_element = `
+									<div class="accordian accordian-flush" id="folder-${sub_folder_id}-directory">
+										<div class="accordian-item">
+											<div class="accordian-header">
+												<div class="btn-group w-100" role="expand" aria-label="Expand directory">
+													<a
+														class="list-group-item list-group-item-action text-start w-100 border-0 ps-0"
+														id="rename-target-${sub_folder_id}"
+														type="button"
+														href="/Documents${sub_folder_path}"
+													>${sub_folder}</a>
+													<div id="folder-${sub_folder_id}-toggle"${expandable}>
+														<button
+															class="accordion-button${hide} w-auto py-2 px-1"
+															data-bs-toggle="collapse"
+															data-bs-target="#collapse-${sub_folder_id}"
+															onclick="directory_toggle(${sub_folder_id})"
+														></button>
+													</div>
+												</div>
+											</div>
+											<div class="accordian-collapse collapse${show}" id="collapse-${sub_folder_id}">
+												<div class="accordian-body" style="padding-left:15px">`
+													%><%- directory_element %><%
+													generateDirectory(directory[sub_folder], level + 1, sub_folder_path)
+													directory_element = `
+												</div>
+											</div>
+										</div>
+									</div>`
+								%><%- directory_element %><%
+								
+							});
+						} %>
+						<%  generateDirectory(user_folders, 0, ''); %>
+					</div>
+				</div>
+				<br>
+				<div class="d-flex row justify-content-center">
+					<div class="col-sm-5">
+						<button class="rounded bg-dark btn-outline-dark text-light" onclick="location.href='/Editor'">
+							New Document
+						</button>
+					</div>
+					<div class="col-sm-5">
+						<button class="rounded bg-dark btn-outline-dark text-light" onclick="createNewFolder()">
+							New Folder
+						</button>
+					</div>
+				</div>
+
+			</div>
+			<div class="col">
+				<div class="flex-row bg-light">
+					<div class="card-header">
+						<h3 class="text-danger"><%= dir_current %></h3>
+					</div>
+					<div class="container-fluid" id=<%=`folder-${dir_id}`%>>
+						<div class="row"  id="document_window"">
+							<% let document_window = ''; %>
+							<% if (dir_depth > 1) {
+								let folder_image = "/resources/img/back_folder.png";
+								let folder_path = map_path[map_parent[dir_id]]
+								document_window += `
+								<div class="col-auto" id="folder-${map_parent[dir_id]}">
+									<a class="draggable folder card bg-transparent border-0" href="/Documents${folder_path}">
+										<div class="card-body bg-transparent text-center">
+											<img src="${folder_image}" width=150 height=150 ondragStart="return false">
+										</div>
+										<div class="card-footer bg-transparent text-center">...</div>
+									</a>
+								</div>
+								`
+							}%>
+							<% dir_folders.folders.forEach(folder => {
+								let folder_image = "/resources/img/folder.png";
+								let folder_path = map_path[folder];
+								let folder_name = folder_path.replace(map_path[dir_id]+'/','').replace(/-/g,' ');
+								document_window += `
+								<div class="col-auto" id="folder-${folder}">
+									<div class="draggable folder" onmousedown="updateDraggable(this)">
+										<a class="card bg-transparent border-0" href="/Documents${folder_path}">
+											<div class="card-body bg-transparent text-center">
+												<img src="${folder_image}" width=150 height=150 ondragStart="return false">
+											</div>
+										</a>
+										<input class='card-footer bg-transparent text-center' value='${folder_name}' id='rename-${folder}'>
+									</div>
+								</div>
+								`
+							}); %>
+							<% dir_files.files.forEach(document => {
+								document_window += `
+								<div class="col-auto" id="file-${document.replace(/ /g,'-')}">
+									<div class="draggable file" onmousedown="updateDraggable(this)">
+										<form action="/LoadDocument" method="post">
+											<button class="card bg-transparent border-0"
+												type="submit"
+												name="file"
+												value="${dir_files.folder}/${document}"
+											>
+												<div class="card-body bg-transparent text-center">
+													<img src="/resources/img/document.png" width=150 height=150 ondragStart="return false">
+												</div>
+											</button>
+										</form>
+										<input class='card-footer bg-transparent text-center' value='${document}' id='rename-${document.replace(/ /g,'-')}'">
+									</div>
+								</div>
+								`
+							}); %>
+							<%- document_window %>
+							<div class="col-auto" id="deletefile">
+								<div class="draggable trash">
+									<div class ="card-body bg-transparent text-center">
+										<img src="/resources/img/pre-thrown-away.png" width=150 height=150 ondragStart="return false">
+									</div>
+									<div class="card-footer bg-transparent text-center">Delete</div>
+								</div>
+							</div>
+							<div class="col"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="delete-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Delete Item?</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>Are you sure you want to delete this item? If this is a folder, deleting it will also delete all of the folder's contents.</p>
+					<p">This action is <b class="text-danger">permanent</b>.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="resetTrashIcon()">Cancel</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="deleteItemShortcut()">Delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="move-conflict-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Move conflict</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>There is already a document/file with that name in that location.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="rename-conflict-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Rename conflict</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>There is already a document/file with that name in this location.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<footer>
+	<%- include('../partials/script_loader') %>
+</footer>
+</html>

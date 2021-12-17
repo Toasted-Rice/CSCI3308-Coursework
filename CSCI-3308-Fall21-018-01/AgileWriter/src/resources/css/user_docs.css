@@ -1,0 +1,38 @@
+.accordion-button:not(.collapsed) {
+    color: black;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.accordion-button::after {
+	background-image: url('../img/plus-square.svg');
+	transform: rotateZ(-90deg);
+}
+
+.accordion-button:not(.collapsed)::after {
+	background-image: url('../img/dash-square.svg');
+	transform: none;
+}
+
+.accordian-collapse {
+	border-left:outset;
+	border-color:antiquewhite
+}
+
+.col-auto, .draggable {
+	border-radius: 40px;
+}
+
+.col-auto input {
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+}
+
+.card-footer {
+	width: 100%;
+}
+
+#directory_window {
+	min-width: 400px;
+}

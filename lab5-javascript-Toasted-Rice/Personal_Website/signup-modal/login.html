@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Question 1</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="login.js"></script>
+    <link rel="stylesheet" type="text/css" href="login.css" />
+  </head>
+
+  <body>
+    
+    <ul class="nav nav-pills m-4">
+      <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="../mypage.html">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="../projects.html">Projects</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link active" href="#">Signup Modal Demo</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="../tic-tac-toe/tic-tac-toe.html">Tic-Tac-Toe</a>
+      </li>
+      <li class="nav-item ml-auto">
+          <a class="nav-link p-0" href="https://github.com/CU-CSCI-3308-Fall-2021/lab-4-html-css-Toasted-Rice">
+              <button type="button" class="btn btn-primary">
+                  <svg class="bi bi-github mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                  </svg>
+                  Github
+              </button>
+          </a>
+      </li>
+    </ul>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>Login Page</h1>
+        <p>
+          This part of the assignment is going to use the Regular Expressions,
+          Javascript and document functions to validate a login form
+        </p>
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <!-- Button to click to show the modal-->
+    <div class="text-center">
+      <a
+        href="#myModal"
+        class="btn btn-info"
+        data-toggle="modal"
+        onclick="openModal()"
+        >Click to Open Sign Up Modal</a
+      >
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+      <div class="modal-dialog modal-login">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="avatar">
+              <img
+                src="https://www.tutorialrepublic.com/examples/images/avatar.png"
+                alt="Avatar"
+              />
+            </div>
+            <h4 class="modal-title">Sign Up page</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="firstName"
+                placeholder="First Name"
+                required="required"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="lastName"
+                placeholder="Last Name"
+                required="required"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                id="psw"
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder="Password"
+                required="required"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                id="cpsw"
+                type="password"
+                class="form-control"
+                name="confirm password"
+                placeholder="Confirm Password"
+                required="required"
+              />
+            </div>
+            <div class="form-group">
+              <button
+                id="my_submit_button"
+                class="btn btn-primary btn-block login-btn"
+                disabled
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div id="message" style="display: block">
+              <h3>Password must contain the following:</h3>
+              <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+              <p id="capital" class="invalid">
+                A <b>capital (uppercase)</b> letter
+              </p>
+              <p id="number" class="invalid">A <b>number</b></p>
+              <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+              <p id="match" class="invalid">
+                Password and Confirm Password Match
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+
+    <!-- Ignore the code below. All of this is just for the code description -->
+    <!-- End of -->
+  </body>
+</html>

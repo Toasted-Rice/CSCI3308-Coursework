@@ -1,0 +1,60 @@
+html, body{
+    height:100%; /* important to vertically align the container */
+    margin:0;
+    padding:0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+#content{
+    flex: 1 0 auto;
+}
+
+#bio-photo{
+    max-width: 350px;
+}
+
+.carousel, .carousel-inner{
+    height: 80vh;
+    min-height: 80vh;
+    max-height: 80vh;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    width: 2em !important;
+    height: 2em !important;
+}
+
+.carousel-control-prev .rounded-circle, .carousel-control-next .rounded-circle{
+    padding: .5em;
+    width:3em;
+    height: 3em;
+}
+
+.carousel-control-prev, .carousel-control-next, .carousel-indicators{
+    filter: invert(100%);
+}
+
+.carousel-indicators li{
+    background-color: black !important;
+    border: 2px ridge white !important;
+    border-radius: 20%;
+}
+
+.carousel-item{
+    height: 100%;
+}
+
+.carousel-item img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+

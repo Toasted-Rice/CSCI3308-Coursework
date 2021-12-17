@@ -1,0 +1,39 @@
+<!--
+  TODO: Update the EJS code to insert the following information:
+    - display_title
+    - url
+    - suggested_link_text
+    - publication_date
+    - summary_short
+
+  HINT: Not sure how to display the reviews, check out Bootstrap cards here: https://getbootstrap.com/docs/4.0/components/card/
+-->
+<% if (items) {
+	var cards = '<div class="card-columns">';
+	<!-- Iterate the items object & update the cards variable -->
+	items.forEach(movie => {
+		var card = '<div class="card">';
+			card += '<div class="card-body">';
+				card += '<h5 class="card-title">';
+					card += movie.display_title;
+				card += '</h5>';
+				card += '<h6 class="card-subtitle text-muted">';
+					card += movie.publication_date;
+				card += '</h6>';
+				card += '<a class="btn btn-primary text-light mt-2 mb-2 w-100" href="' + movie.link.url + '">';
+					card += '<p class="font-weight-bold mb-1">Read the NYTimes Review</p>'
+					card += movie.headline;
+				card += '</a>';
+				card += '<p class="card-txt">';
+					card += movie.summary_short;
+					if (!movie.summary_short.length) card += 'Read the review now!'
+				card += '</p>';
+			card += '</div>'
+		card += '</div>'
+		cards += card;
+	});
+	cards += '</div>'
+	%>
+	
+	<%- cards %>
+<% } %>

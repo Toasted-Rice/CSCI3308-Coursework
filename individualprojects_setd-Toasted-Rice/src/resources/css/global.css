@@ -1,0 +1,220 @@
+html, body {
+	height: 100%
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	background-color: #212529;
+}
+
+#content {
+	flex: 1 0 auto;
+}
+
+#footer {
+	flex-shrink: 0;
+}
+
+.nav-link {
+	border-radius: 5px;
+}
+
+.nav-item > .list-group {
+	border: 1px solid ghostwhite !important;
+	border-radius: 5	px !important;
+	margin-top: 5px;
+	z-index: 1050;
+}
+
+.nav-item > .list-group > .list-group-item {
+	border-bottom: 1px solid ghostwhite !important;
+	text-align: left;
+}
+
+.nav-item > .list-group > .list-group-item:hover {
+	color: black !important;
+	background-color: greenyellow !important;
+}
+
+.nav-item > .list-group:last-child {
+	border-bottom: inherit !important;
+}
+
+.btn:not(.btn-outline-light) {
+	color: ghostwhite;
+	background-color: #212529;
+	border: 1px solid ghostwhite;
+}
+
+.btn:hover {
+	color: black !important;
+	background-color: yellowgreen !important;
+	border: 1px solid yellowgreen;
+}
+
+#github:hover {
+	color: yellowgreen !important;
+}
+
+#linkedin {
+	display: block;
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	transition: color .15s
+		ease-in-out, background-color .15s
+		ease-in-out, border-color .15s
+		ease-in-out;
+}
+
+.bi-linkedin {color: ghostwhite !important;}
+.bi-linkedin:hover {color: yellowgreen !important;}
+
+footer > .nav {
+	background-color:black;
+}
+
+
+#search-bar {
+	align-self: center;
+}
+
+#name-header {
+	flex-direction: column;
+}
+
+::-ms-input-placeholder { color: rgb(215, 255, 140) !important; }
+:-ms-input-placeholder { color: rgb(215, 255, 140) !important; }
+::placeholder {
+	color: rgb(215, 255, 140) !important;
+	font-weight: 100;
+	opacity: .8 !important;
+}
+
+.form-control {
+	background-color: #212529 !important;
+	color: ghostwhite !important;
+}
+.form-group > input {
+	background-color: #212529 !important;
+	color: ghostwhite !important;
+}
+.nav-link:hover {
+	background-color: greenyellow !important;
+	color: black !important;
+}
+
+.navbar-nav {
+	align-items: baseline;
+	align-self: center;
+}
+
+.collapse {
+	position: absolute;
+}
+
+.collapsing {
+	position: absolute;
+}
+
+.container-fluid {
+	text-align:center;
+}
+
+#status-img {
+	width:auto;
+	height:80%;
+}
+
+/** MODAL STYLING **/
+.modal-content {
+	border-radius: 0px;
+	box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+	background-color: #212529;
+}
+
+.modal-backdrop.show {
+	opacity: 0.75;
+}
+
+/** SPINNER CREATION **/
+
+.loader {
+	position: relative;
+	text-align: center;
+	margin: 15px auto 35px auto;
+	z-index: 9999;
+	display: block;
+	width: 80px;
+	height: 80px;
+	border: 10px solid rgba(0, 0, 0, .3);
+	border-radius: 50%;
+	border-top-color: #000;
+	animation: spin 1s ease-in-out infinite;
+	-webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+to {
+	-webkit-transform: rotate(360deg);
+}
+}
+
+@-webkit-keyframes spin {
+to {
+	-webkit-transform: rotate(360deg);
+}
+}
+
+/** RATING SCHEME **/
+.rating-radio {
+	display: none;
+}
+
+.rating-star {
+	font-size: 30px;
+}
+
+.rating {
+	direction: rtl;
+	unicode-bidi: bidi-override;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	display: inline-block;
+	position: relative;
+}
+.rating:hover, .rating:hover > .form-check {
+	color: ghostwhite !important;
+}
+
+.rating > .form-check:hover,
+.rating > .form-check:hover ~ .form-check,
+.rating > .form-check:hover ~ .form-check ~ .form-check, 
+.rating > .form-check:hover ~ .form-check ~ .form-check ~ .form-check, 
+.rating > .form-check:hover ~ .form-check ~ .form-check ~ .form-check ~ .form-check {
+	color: yellowgreen !important;
+}
+
+.rating-desc {
+	display: none;
+	position:absolute;
+	top: 12px;
+	left: 160px;
+	width: 400px;
+	direction: ltr;
+	color: ghostwhite;
+	pointer-events: none;
+}
+
+.rating:hover .form-check .rating-desc {
+	display: none !important;
+}
+
+.rating-star:hover + .rating-radio + .rating-desc {
+	display:inherit !important;
+	color: yellowgreen;
+}

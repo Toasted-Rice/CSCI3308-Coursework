@@ -1,0 +1,19 @@
+#tic-tac-toe-board > tbody > tr > td:first-of-type {
+	border-right: 1pt solid yellowgreen;
+}
+
+#tic-tac-toe-board > tbody > tr > td:last-of-type {
+	border-left: 1pt solid yellowgreen;
+}
+
+#tic-tac-toe-board > tbody > tr:last-of-type {
+	border-bottom: 1pt solid transparent;
+}
+
+#instructions {
+	color: yellowgreen !important;
+}
+
+input.form-control.bg-transparent {
+	color: white;
+}

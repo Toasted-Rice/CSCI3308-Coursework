@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Question 4</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="rules.js"></script>
+  </head>
+  <body>
+    
+    <ul class="nav nav-pills m-4">
+      <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="mypage.html">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="../projects.html">Projects</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="../signup-modal/login.html">Signup Modal Demo</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link active" href="#">Tic-Tac-Toe</a>
+      </li>
+      <li class="nav-item ml-auto">
+          <a class="nav-link p-0" href="https://github.com/CU-CSCI-3308-Fall-2021/lab-4-html-css-Toasted-Rice">
+              <button type="button" class="btn btn-primary">
+                  <svg class="bi bi-github mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                  </svg>
+                  Github
+              </button>
+          </a>
+      </li>
+    </ul>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>TicTacToe</h1>
+        <p>
+          In this part of the assignment you'll build a simple tictactoe using
+          bootstrap and javascript
+        </p>
+        <br />
+        <a
+          href="https://www.google.com/search?q=tic+tac+toe"
+          alt="how to play"
+          target="_blank"
+          >How to play Tic-Tac-Toe</a
+        ><br />
+        <p>
+          <b>No need to modify this HTML page.</b> All functionality needs to be
+          implemented in the rules.js file. The rules.js script is included in
+          this page.
+          <strong
+            >However, you are encouraged to go through this HTML page source and
+            understand how the methods defined in rules.js are being
+            invoked.</strong
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <form>
+        <div class="form-group row">
+          <label for="player1" class="col-sm-2 col-form-label">Player 1:</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="player1_id"
+              placeholder="player1_name"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="player2" class="col-sm-2 col-form-label">Player 2:</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="player2_id"
+              placeholder="player2_name"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-5">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="begin_play()"
+            >
+              Begin Play
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="reset_play()"
+            >
+              Reset Play
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <div id="turn_info">Game has not begun.</div>
+      <br />
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="text-center" id="A1">A1</td>
+            <td class="text-center" id="A2">A2</td>
+            <td class="text-center" id="A3">A3</td>
+          </tr>
+          <tr>
+            <td class="text-center" id="B1">B1</td>
+            <td class="text-center" id="B2">B2</td>
+            <td class="text-center" id="B3">B3</td>
+          </tr>
+          <tr>
+            <td class="text-center" id="C1">C1</td>
+            <td class="text-center" id="C2">C2</td>
+            <td class="text-center" id="C3">C3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <form>
+        <div class="form-group row">
+          <label for="player1" class="col-sm-2 col-form-label">Move:</label>
+          <div class="col-sm-5">
+            <input
+              type="text"
+              class="form-control"
+              id="move_text_id"
+              placeholder="Cell Number for Example: A1"
+              onkeydown="moveEnter(event)"
+            />
+          </div>
+          <div class="col-sm-5">
+            <button type="button" class="btn btn-primary" onclick="play()">
+              Play
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

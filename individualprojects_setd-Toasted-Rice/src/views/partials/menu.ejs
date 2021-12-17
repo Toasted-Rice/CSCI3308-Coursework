@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	<div class="container-fluid">
+		<div class="row w-100 d-flex">
+			<ul class="col-lg-auto col-md-8 flex-md-row flex-sm-column ms-2 navbar-nav" id="navbar">
+				<li class="nav-item">
+					<% active = (page_tab === "Home") ? " fw-bold" : ""; %>
+					<a class="nav-link text-light mx-1 px-2<%- active %>" href="/">
+						Home
+					</a>
+				</li>
+				<li class="nav-item dropmenu">
+					<% active = (page_tab === "Projects") ? " fw-bold" : ""; %>
+					<button class="nav-link text-light bg-dark border-0 mx-1 px-2<%- active %>" data-bs-target="#projects" data-bs-toggle="collapse" aria-expanded="false" aria-controls="projects-dropdown">
+						Projects
+					</button>
+					<div class="list-group collapse" data-bs-parent="#navbar" id="projects">
+						<a class="list-group-item bg-dark text-light" href="/Projects/Overview">
+							Overview
+						</a>
+						<a class="list-group-item bg-dark text-light" href="/Projects/Tic-Tac-Toe">
+							Tic-Tac-Toe
+						</a>
+						<a class="list-group-item bg-dark text-light" href="/Projects/SignupModal">
+							Signup Modal
+						</a>
+						<a class="list-group-item bg-dark text-light" href="/Projects/DroneDemo">
+							Drone Demo
+						</a>
+						<button class="list-group-item bg-dark text-light" onclick="heroku_load_modal()">
+							Agile Writer
+						</button>
+					</div>
+				</li>
+				<li class="nav-item dropmenu">
+					<% active = (page_tab === "WebServices") ? " fw-bold" : ""; %>
+					<button class="nav-link text-light bg-dark border-0 mx-1 px-2<%-active %>" data-bs-target="#web-services" data-bs-toggle="collapse" aria-expanded="false" aria-controls="web-services-dropdown">
+						Web Services
+					</button>
+					<div class="list-group collapse" data-bs-parent="#navbar" id="web-services">
+						<a class="list-group-item bg-dark text-light" href="/WebServices/NYTimesAPI">
+							NYTimes Movie Reviews API
+						</a>
+						<a class="list-group-item bg-dark text-light" href="/WebServices/FlickrAPI">
+							Flickr Search API
+						</a>
+						<a class="list-group-item bg-dark text-light" href="/WebServices/BreweryAPI">
+							Open Brewery DB
+						</a>
+					</div>
+				</li>
+				<li class="nav-item dropmenu">
+					<% active = (page_tab === "Database") ? " active" : ""; %>
+					<button class="nav-link text-light bg-dark border-0 mx-1 px-2<%-active %>" data-bs-target="#databases" data-bs-toggle="collapse" aria-expanded="false" aria-controls="databases-dropdown">
+						Databases
+					</button>
+					<div class="list-group collapse" data-bs-parent="#navbar" id="databases">
+						<a class="list-group-item bg-dark text-light" href="/Databases/BreweryReviews">
+							Brewery Reviews
+						</a>
+					</div>
+				</li>
+				<li class="nav-item d-md-none d-sm-block">
+					<a class="nav-link text-light mx-1 px-2<%= active %>" href="https://github.com/CU-CSCI-3308-Fall-2021?q=Toasted-Rice">Github</a>
+				</li>
+			</ul>
+			<a class="col-1 order-lg-3 d-md-block d-sm-none d-none text-end p-0 ms-auto" href="https://github.com/CU-CSCI-3308-Fall-2021?q=Toasted-Rice">
+				<svg class="bi bi-github mr-2 text-light" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16" id="github">
+					<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+				</svg>
+			</a>
+			<% let search_bar = "" %>
+			<% if (search_placeholder) {
+				search_bar = `
+				<form class="col-lg-auto col-md-12 flex-fill d-flex h-100 pt pe-0" id="search-bar" onsubmit="return false;">
+					<input class="form-control bg-transparent text-light mx-1" name="search_term" type="search" placeholder="${search_placeholder}" aria-label="Search City" value="${search_term.replace(/\+/g,' ')}">
+					<button class="btn btn-outline-light mx-1" type="submit" value="Submit">Search</button>
+				</form>
+			`} %>
+			<%-search_bar %>
+		</div>
+	</div>
+</nav>

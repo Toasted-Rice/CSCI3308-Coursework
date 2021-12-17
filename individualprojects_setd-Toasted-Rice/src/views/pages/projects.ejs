@@ -1,0 +1,29 @@
+<%- include ('../partials/header') %>
+<body>
+	<%- include ('../partials/menu') %>
+	<div class="container-fluid py-4" id="content">
+		<div id="showcase" class="carousel slide" data-interval="0" data-bs-ride="carousel" height="60em">
+			<div class="carousel-inner col-auto">
+				<div class="carousel-item active">
+					<img src="https://img.itch.zone/aW1hZ2UvOTEzNDY2LzUxNjM4NzMuZ2lm/347x500/cH7DIn.gif" alt="First slide" width="600px" onerror=this.src="img/image_not_found.jpeg">
+				</div>
+				<div class="carousel-item">
+					<img src="/resources/img/SuperSpaceGuy.gif" alt="Second slide" onerror=this.src="/resources/img/image_not_found.jpeg">
+				</div>
+				<div class="carousel-item">
+					<img src="/resources/img/demosat.gif" alt="Third slide" onerror=this.src="/resources/img/image_not_found.jpeg">
+				</div>
+			</div>
+			<button class="carousel-control-prev" data-bs-target="#showcase" role="button" data-bs-slide="prev" >
+				&#9666;
+			</button>
+			<button class="carousel-control-next" data-bs-target="#showcase" role="button" data-bs-slide="next">
+				&#9656;
+			</button>
+		</div>
+	</div>
+</body>
+<footer>
+	<%- include('../partials/footer') %>
+</footer>
+</html>

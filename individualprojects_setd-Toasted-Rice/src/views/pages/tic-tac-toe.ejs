@@ -1,0 +1,113 @@
+<%- include ('../partials/header') %>
+<body>
+	<%- include ('../partials/menu') %>
+	<div class="container-fluid text-light text-start py-4" id="content">
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+			<h1>Tic-Tac-Toe</h1>
+			<a
+			  href="https://www.google.com/search?q=tic+tac+toe"
+			  id="instructions"
+			  alt="how to play"
+			  target="_blank"
+			>How to play Tic-Tac-Toe</a>
+		  </div>
+		</div>
+		<div class="container">
+			<form>
+				<div class="form-group row m-2">
+				<label for="player1" class="col-sm-2 col-form-label">Player 1:</label>
+				<div class="col-sm-10">
+					<input
+					type="text"
+					class="form-control bg-transparent"
+					id="player1_id"
+					placeholder="player1_name"
+					/>
+				</div>
+				</div>
+				<div class="form-group row m-2">
+				<label for="player2" class="col-sm-2 col-form-label">Player 2:</label>
+				<div class="col-sm-10">
+					<input
+					type="text"
+					class="form-control bg-transparent"
+					id="player2_id"
+					placeholder="player2_name"
+					/>
+				</div>
+				</div>
+				<div class="form-group row">
+				<div class="col-sm-5 mx-auto text-center">
+					<button
+					type="button"
+					class="btn"
+					onclick="begin_play()"
+					>
+					Begin Play
+					</button>
+					<button
+					type="button"
+					class="btn"
+					onclick="reset_play()"
+					>
+					Reset Play
+					</button>
+				</div>
+				</div>
+			</form>
+		</div>
+		<div class="container">
+			<div id="turn_info">Game has not begun.</div>
+			<br />
+		</div>
+
+		<div class="container">
+			<table class="table table-dark" id="tic-tac-toe-board" style="color: greenyellow; border:greenyellow">
+				<tbody>
+				<tr>
+					<td class="text-center" id="A1">A1</td>
+					<td class="text-center" id="A2">A2</td>
+					<td class="text-center" id="A3">A3</td>
+				</tr>
+				<tr>
+					<td class="text-center" id="B1">B1</td>
+					<td class="text-center" id="B2">B2</td>
+					<td class="text-center" id="B3">B3</td>
+				</tr>
+				<tr>
+					<td class="text-center" id="C1">C1</td>
+					<td class="text-center" id="C2">C2</td>
+					<td class="text-center" id="C3">C3</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container">
+			<form>
+				<div class="form-group row m-2">
+				<label for="player1" class="col-sm-2 col-form-label">Move:</label>
+				<div class="col-sm-5">
+					<input
+					type="text"
+					class="form-control bg-transparent"
+					id="move_text_id"
+					placeholder="Cell Number for Example: A1"
+					onkeydown="moveEnter(event)"
+					/>
+				</div>
+				<div class="col-sm-5">
+					<button type="button" class="btn" onclick="play()">
+					Play
+					</button>
+				</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<footer>
+	<%- include('../partials/footer') %>
+</footer>
+</html>

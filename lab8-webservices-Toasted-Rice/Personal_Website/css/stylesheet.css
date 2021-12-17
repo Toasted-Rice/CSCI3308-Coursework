@@ -1,0 +1,140 @@
+html, body{
+    height:100%; /* important to vertically align the container */
+    margin:0;
+    padding:0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+#content{
+    flex: 1 0 auto;
+}
+
+#footer{
+	flex-shrink: 0;
+}
+
+#bio-photo{
+    max-width: 350px;
+}
+
+.carousel, .carousel-inner{
+    height: 80vh;
+    min-height: 80vh;
+    max-height: 80vh;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    width: 2em !important;
+    height: 2em !important;
+}
+
+.carousel-control-prev .rounded-circle, .carousel-control-next .rounded-circle{
+    padding: .5em;
+    width:3em;
+    height: 3em;
+}
+
+.carousel-control-prev, .carousel-control-next, .carousel-indicators{
+    filter: invert(100%);
+}
+
+.carousel-indicators li{
+    background-color: black !important;
+    border: 2px ridge white !important;
+    border-radius: 20%;
+}
+
+.carousel-item{
+    height: 100%;
+}
+
+.carousel-item img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.flex-grow {
+	flex: 1 0 auto;
+}
+
+
+@media only screen and (max-width: 675px) {
+	.btn-github, .nav-item, .flickr-nav {
+		width: 100%;
+	}
+	.flickr-github {
+		margin-bottom: 1rem;
+	}
+}
+
+@media only screen and (min-width: 1500px) {
+	.flickr-srch {
+		max-width: 900px;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	.flickr-srch {
+		min-width: 524px;
+		flex: 1 0 auto;
+	}
+}
+
+@media only screen and (max-width: 575.9px) {
+	.flickr-srch {
+		padding-right: 80px;
+		width: 100%;
+	}
+}
+
+
+/** SPINNER CREATION **/
+
+.loader {
+	position: relative;
+	text-align: center;
+	margin: 15px auto 35px auto;
+	z-index: 9999;
+	display: block;
+	width: 80px;
+	height: 80px;
+	border: 10px solid rgba(0, 0, 0, .3);
+	border-radius: 50%;
+	border-top-color: #000;
+	animation: spin 1s ease-in-out infinite;
+	-webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+to {
+	-webkit-transform: rotate(360deg);
+}
+}
+
+@-webkit-keyframes spin {
+to {
+	-webkit-transform: rotate(360deg);
+}
+}
+
+  
+
+/** MODAL STYLING **/
+
+.modal-content {
+	border-radius: 0px;
+	box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+}
+
+.modal-backdrop.show {
+	opacity: 0.75;
+}

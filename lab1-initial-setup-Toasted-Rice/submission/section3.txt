@@ -1,0 +1,76 @@
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+2ef9acd65a94   hello-world   "/hello"   8 seconds ago   Exited (0) 7 seconds ago             sleepy_wu
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker rm sleepy_wu
+sleepy_wu
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker run --rm hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker run -it ubuntu bash
+root@aaaf51a3cc73:/# exit
+exit
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker run -dt ubuntu bash
+f110e15f8fdcd14ee5d763ab05ce2bfd34e532615b9317cfec19a5b342d0a523
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS         PORTS     NAMES
+f110e15f8fdc   ubuntu    "bash"    9 seconds ago   Up 8 seconds             priceless_sanderson
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker rm priceless_sanderson
+Error response from daemon: You cannot remove a running container f110e15f8fdcd14ee5d763ab05ce2bfd34e532615b9317cfec19a5b342d0a523. Stop the container before attempting removal or force remove
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>docker rm -f priceless_sanderson
+priceless_sanderson
+
+C:\Users\james\Documents\School\CSCI 2800\lab1-initial-setup-Toasted-Rice>

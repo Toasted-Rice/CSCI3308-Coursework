@@ -1,0 +1,39 @@
+<%- include ('../partials/header') %>
+<body>
+	<%- include ('../partials/menu') %>
+	<div class="container py-4" id="content">
+		<% let table = '' %>
+		<% if (search_data) {
+			table = `
+			<table class="table table-dark text-start text-light"}'>
+				<thead>
+					<tr>
+						<td class="name"><a href="javascript:review_sort('name')">Brewery</a></td>
+						<td class="state"><a href="javascript:review_sort('state')">State</a></td>
+						<td class="score"><a href="javascript:review_sort('rating')">Rating</a></td>
+						<td class="review"><a href="javascript:review_sort('review_length')">Review</a></td>
+						<td class="date"><a href="javascript:review_sort('date')">Review Date</a></td>
+					</tr>
+				</thead>
+				<tbody class="data-table">`
+				for (const row of search_data) {
+					table += `
+					<tr class="data-row" rating=${row.rating}>
+						<td class="name">${row.brewery_name}</td>
+						<td class="state">${row.brewery_state}</td>
+						<td class="score">${'★'.repeat(row.rating)}</td>
+						<td class="review">${row.review}</td>
+						<td class="date">${row.review_date.toLocaleString('en-US')}</td>
+					</tr>`;
+				}
+				table += `
+				</tbody>
+			</table>`;
+		} %>
+		<%-table %>
+	</div>
+</body>
+<footer>
+	<%- include('../partials/footer') %>
+</footer>
+</html>
