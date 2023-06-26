@@ -23,7 +23,6 @@ services:
       - "3000:3000"
     volumes:
       - ./src/:/app/src
-    command: "npm run test"
 
 volumes:
   vogue-db: {}
